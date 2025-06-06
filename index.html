@@ -36,18 +36,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Running Time Calculator</h1>
-        <div class="input-group">
-            <input type="text" id="timeInput" placeholder="Enter time (MM:SS)" pattern="\d{1,2}:\d{2}">
-            <select id="distanceSelect">
-                <option value="5K">5K</option>
-                <option value="10K" selected>10K</option>
-            </select>
-            <button id="calculateBtn">Calculate</button>
-        </div>
-        <div id="results"></div>
+    <h1>🏃 Running Time Calculator</h1>
+    <p class="subtitle">Calculate your split times at 200m, 400m, 1000m, and 5000m distances for a 5K or 10K run.</p>
+    <div class="input-group">
+        <input type="text" id="timeInput" placeholder="Enter time (MM:SS)" pattern="\d{1,2}:\d{2}">
+        <select id="distanceSelect">
+            <option value="5K">5K</option>
+            <option value="10K" selected>10K</option>
+        </select>
+        <button id="calculateBtn">Calculate</button>
     </div>
+    <div id="results"></div>
     <script src="script.js"></script>
 </body>
 </html> 

@@ -1,18 +1,25 @@
 document.getElementById('calculateBtn').addEventListener('click', calculateTimes);
 
 function calculateTimes() {
-    const timeInput = document.getElementById('timeInput').value;
+    const timeInput = document.getElementById('timeInput');
     const distanceSelect = document.getElementById('distanceSelect').value;
     const resultsDiv = document.getElementById('results');
 
+    // Handle single number input by adding :00
+    let processedTime = timeInput.value;
+    if (/^\d+$/.test(processedTime)) {
+        processedTime = processedTime + ':00';
+        timeInput.value = processedTime; // Update the input field
+    }
+
     // Validate input format
-    if (!timeInput.match(/^\d{1,2}:\d{2}$/)) {
+    if (!processedTime.match(/^\d{1,2}:\d{2}$/)) {
         resultsDiv.innerHTML = '<p class="error">Please enter time in MM:SS format</p>';
         return;
     }
 
     // Parse input time
-    const [minutes, seconds] = timeInput.split(':').map(Number);
+    const [minutes, seconds] = processedTime.split(':').map(Number);
     const totalSeconds = minutes * 60 + seconds;
 
     // Calculate times for different distances
@@ -33,9 +40,21 @@ function calculateTimes() {
         const timeForDistance = Math.floor(totalSeconds * (d.length / (distanceSelect === '10K' ? 10 : 5)));
         const resultMinutes = Math.floor(timeForDistance / 60);
         const resultSeconds = timeForDistance % 60;
-        return `${d.name}: ${resultMinutes}:${resultSeconds.toString().padStart(2, '0')}`;
+        
+        // Calculate predicted finish time using the rounded-down split time
+        const fullDistance = distanceSelect === '10K' ? 10 : 5;
+        const splitTimeInSeconds = resultMinutes * 60 + resultSeconds;
+        const predictedTime = splitTimeInSeconds * (fullDistance / d.length);
+        const predictedMinutes = Math.floor(predictedTime / 60);
+        const predictedSeconds = Math.round(predictedTime % 60);
+        const predictedTimeStr = `${predictedMinutes}:${predictedSeconds.toString().padStart(2, '0')}`;
+        
+        return `<div class="result-row">
+            <span class="distance">${d.name}</span>
+            <span class="time" title="Predicted finish time: ${predictedTimeStr}">${resultMinutes}:${resultSeconds.toString().padStart(2, '0')}</span>
+        </div>`;
     });
 
     // Display results
-    resultsDiv.innerHTML = results.map(result => `<p>${result}</p>`).join('');
+    resultsDiv.innerHTML = results.join('');
 } 
