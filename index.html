@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Primary Meta Tags -->
-    <title>Running Time Calculator | Calculate Your Pace for 5K & 10K Runs</title>
-    <meta name="title" content="Running Time Calculator | Calculate Your Pace for 5K & 10K Runs">
-    <meta name="description" content="Free running pace calculator. Perfect for 5K and 10K runners. Calculate your split times for 200m, 400m, 1000m, and 5000m distances.">
-    <meta name="keywords" content="running calculator, pace calculator, 5K calculator, 10K calculator, running splits, running pace, split times">
+    <title>Running Time Calculator | Calculate Your Pace & Split Times</title>
+    <meta name="title" content="Running Time Calculator | Calculate Your Pace & Split Times">
+    <meta name="description" content="Free running pace calculator. Calculate your split times for any distance. Perfect for training and race preparation.">
+    <meta name="keywords" content="running calculator, pace calculator, running splits, running pace, split times, marathon calculator, half marathon calculator">
     <meta name="author" content="Your Name or Company">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://your-domain.com/">
-    <meta property="og:title" content="Running Time Calculator | Calculate Your Pace for 5K & 10K Runs">
-    <meta property="og:description" content="Free running pace calculator. Perfect for 5K and 10K runners. Calculate your split times for 200m, 400m, 1000m, and 5000m distances.">
+    <meta property="og:title" content="Running Time Calculator | Calculate Your Pace & Split Times">
+    <meta property="og:description" content="Free running pace calculator. Calculate your split times for any distance. Perfect for training and race preparation.">
     <meta property="og:image" content="https://your-domain.com/path-to-image.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://your-domain.com/">
-    <meta property="twitter:title" content="Running Time Calculator | Calculate Your Pace for 5K & 10K Runs">
-    <meta property="twitter:description" content="Free running pace calculator. Perfect for 5K and 10K runners. Calculate your split times for 200m, 400m, 1000m, and 5000m distances.">
+    <meta property="twitter:title" content="Running Time Calculator | Calculate Your Pace & Split Times">
+    <meta property="twitter:description" content="Free running pace calculator. Calculate your split times for any distance. Perfect for training and race preparation.">
     <meta property="twitter:image" content="https://your-domain.com/path-to-image.jpg">
     
     <!-- Favicon -->
@@ -37,12 +37,15 @@
 </head>
 <body>
     <h1>🏃 Running Time Calculator</h1>
-    <p class="subtitle">Calculate your split times at 200m, 400m, 1000m, and 5000m distances for a 5K or 10K run.</p>
+    <p class="subtitle">Calculate your split times and pace for any distance.</p>
     <div class="input-group">
-        <input type="text" id="timeInput" placeholder="Enter time (MM:SS)" pattern="\d{1,2}:\d{2}">
+        <input type="text" id="timeInput" placeholder="Enter time (HH:mm:ss or mm:ss)" pattern="(\d{1,2}:)?\d{1,2}:\d{2}">
         <select id="distanceSelect">
             <option value="5K">5K</option>
             <option value="10K" selected>10K</option>
+            <option value="16.09344">16.1K</option>
+            <option value="21.0975">21.1K</option>
+            <option value="42.195">42.2K</option>
         </select>
         <button id="calculateBtn">Calculate</button>
     </div>
